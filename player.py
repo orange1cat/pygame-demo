@@ -14,6 +14,7 @@ class Player(pygame.sprite.Sprite):
         # general setup
         self.image = self.animations[self.status][self.frame_index] # a surface obj
         self.rect = self.image.get_rect(center = pos) # get rectangle area from surface
+        self.z = LAYERS['main']
 
         # movement attributes
         self.direction = pygame.math.Vector2()
@@ -111,7 +112,7 @@ class Player(pygame.sprite.Sprite):
                 self.timers['seed switch'].activate()
                 self.seed_index += 1
                 self.seed_index = self.seed_index if self.seed_index < len(self.seeds) else 0
-                self.selected_seed = self.tools[self.seed_index]
+                self.selected_seed = self.seeds[self.seed_index]
 
 
     def get_status(self):
